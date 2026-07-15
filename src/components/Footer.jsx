@@ -31,6 +31,7 @@ export default function Footer() {
               <li><Link to="/products?cat=Steel">Steel</Link></li>
               <li><Link to="/products?cat=Safety %26 PPE">Safety & PPE</Link></li>
               <li><Link to="/products?cat=Pipes %26 Fittings">Pipes & fittings</Link></li>
+              <li><Link to="/products?cat=Sanitary Ware">Sanitary ware</Link></li>
               <li><Link to="/products?cat=Timber, Boards %26 Doors">Timber & boards</Link></li>
             </ul>
           </div>

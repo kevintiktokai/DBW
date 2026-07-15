@@ -1,5 +1,6 @@
-// Product data transcribed from DBW's 2026 PPE Catalogue and
-// Farming & Mining Catalogue. Prices shown exactly as printed ("from $X").
+// Product data transcribed from DBW's 2026 PPE Catalogue,
+// Farming & Mining Catalogue and Sanitary Ware Catalogue.
+// Prices shown exactly as printed ("from $X").
 // Images are the exact photos extracted from the catalogue PDFs.
 
 const img = import.meta.glob('../assets/products/*.{png,jpg}', {
@@ -19,6 +20,7 @@ export const CATEGORIES = [
   'Welding & Cutting',
   'Fencing',
   'Timber, Boards & Doors',
+  'Sanitary Ware',
   'Site Essentials',
 ]
 
@@ -100,7 +102,23 @@ export const PRODUCTS = [
   { name: 'Structural & Rough Sawn Timber — All Sizes', cat: 'Timber, Boards & Doors', img: p('rough-sawn-timber') },
   { name: 'Shutter, Structural & Furniture Boards', cat: 'Timber, Boards & Doors', img: p('boards') },
   { name: 'Interior & Exterior Doors', cat: 'Timber, Boards & Doors', img: p('doors') },
-  { name: 'Sanitary Ware', cat: 'Timber, Boards & Doors', img: p('sanitary-ware') },
+
+  // ---------- SANITARY WARE CATALOGUE 2026 ("Style with Substance") ----------
+  { name: 'Geberit Selnova Toilet Set', cat: 'Sanitary Ware', price: '$430', img: p('geberit-set') },
+  { name: 'Ocenia Counter-Top Basin', cat: 'Sanitary Ware', price: '$45', img: p('ocenia-basin') },
+  { name: 'Marble Oval Bath Tub', cat: 'Sanitary Ware', price: '$690', img: p('marble-oval-bath-tub') },
+  { name: 'Marble Drop-In Bath Tub — 1700×700', cat: 'Sanitary Ware', price: '$240', img: p('marble-drop-in-bath-tub') },
+  { name: 'Durastone Shower Tray — 900×900', cat: 'Sanitary Ware', price: '$150', img: p('durastone-shower-tray') },
+  { name: 'Bestford Shower Mixer', cat: 'Sanitary Ware', price: '$15', img: p('bestford-shower-mixer') },
+  { name: 'Wilro Shower Set', cat: 'Sanitary Ware', price: '$15', img: p('wilro-shower-set') },
+  { name: 'Aspire Long Basin Mixer', cat: 'Sanitary Ware', price: '$35', img: p('aspire-basin-mixer') },
+  { name: 'Bri Cross Stop Tap', cat: 'Sanitary Ware', price: '$25', img: p('bri-cross-stop-tap') },
+  { name: 'Breeze Paper Towel Dispenser', cat: 'Sanitary Ware', price: '$30', img: p('breeze-towel-dispenser') },
+  { name: 'Automatic Soap Dispenser', cat: 'Sanitary Ware', price: '$45', img: p('automatic-soap-dispenser') },
+  { name: 'Stainless Steel Manual Soap Dispenser', cat: 'Sanitary Ware', price: '$45', img: p('manual-soap-dispenser'), badge: 'Best seller' },
+  { name: 'Frankie Single Bowl Sink', cat: 'Sanitary Ware', price: '$30', img: p('frankie-single-bowl-sink') },
+  { name: 'Genwec Automatic Hand Dryer', cat: 'Sanitary Ware', img: p('genwec-hand-dryer') },
+  { name: 'H&C 32mm Basin Waste', cat: 'Sanitary Ware', price: '$9', img: p('hc-basin-waste') },
 
   // ---------- SITE ESSENTIALS ----------
   { name: 'Hand & Power Tools', cat: 'Site Essentials', img: p('hand-tools') },

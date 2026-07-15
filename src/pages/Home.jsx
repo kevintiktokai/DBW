@@ -18,7 +18,7 @@ import weldingHero from '../assets/photos/welding-hero.png'
 import fencingHero from '../assets/photos/fencing-hero.png'
 import ppeCover from '../assets/photos/ppe-cover.png'
 import timberImg from '../assets/products/rough-sawn-timber.png'
-import doorsImg from '../assets/products/doors.png'
+import sanitaryImg from '../assets/products/ocenia-basin.jpg'
 import teamTogether from '../assets/photos/team-together.jpg'
 
 const Hero3D = lazy(() => import('../components/Hero3D'))
@@ -62,16 +62,16 @@ const DEPARTMENTS = [
     cat: 'Fencing',
   },
   {
-    title: 'Timber & Boards',
-    text: 'Structural and rough sawn timber in all sizes; shutter, structural and furniture boards.',
+    title: 'Timber, Boards & Doors',
+    text: 'Structural and rough sawn timber in all sizes; shutter, structural and furniture boards; interior and exterior doors.',
     img: timberImg,
     cat: 'Timber, Boards %26 Doors',
   },
   {
-    title: 'Doors & Sanitary',
-    text: 'Interior and exterior doors, plus a one-stop shop for all your sanitary ware.',
-    img: doorsImg,
-    cat: 'Timber, Boards %26 Doors',
+    title: 'Sanitary Ware',
+    text: 'Style with substance — basins, baths, toilets, mixers, showers and dispensers for every bathroom.',
+    img: sanitaryImg,
+    cat: 'Sanitary Ware',
   },
 ]
 
@@ -173,7 +173,7 @@ export default function Home() {
                 <span>Years established</span>
               </div>
               <div className="hero__stat">
-                <b><CountUp value={70} suffix="+" /></b>
+                <b><CountUp value={80} suffix="+" /></b>
                 <span>Product lines</span>
               </div>
               <div className="hero__stat">
