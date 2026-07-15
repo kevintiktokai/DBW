@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import Intro from './components/Intro'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import QuoteDrawer from './components/QuoteDrawer'
@@ -26,6 +27,7 @@ export default function App() {
         Skip to content
       </a>
       <ScrollToTop />
+      <Intro />
       <Nav />
       <main id="main">
         <motion.div

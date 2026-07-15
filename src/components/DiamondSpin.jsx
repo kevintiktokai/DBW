@@ -25,7 +25,7 @@ function Gem() {
  * Small decorative 3D diamond — the brand motif, used in the CTA band.
  * Mounts its canvas only when scrolled into view.
  */
-export default function DiamondSpin({ style }) {
+export default function DiamondSpin({ className, style }) {
   const holder = useRef()
   const [visible, setVisible] = useState(false)
 
@@ -39,7 +39,7 @@ export default function DiamondSpin({ style }) {
   }, [])
 
   return (
-    <div ref={holder} style={style} aria-hidden="true">
+    <div ref={holder} className={className} style={style} aria-hidden="true">
       {visible && (
         <Canvas dpr={[1, 1.5]} camera={{ position: [0, 0, 4.2], fov: 40 }} gl={{ alpha: true }}>
           <ambientLight intensity={1.1} />

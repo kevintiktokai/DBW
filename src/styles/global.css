@@ -101,6 +101,42 @@ button {
   top: 0;
 }
 
+/* ---------- brand intro ---------- */
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(165deg, #2c1733 0%, var(--ink) 70%);
+}
+
+.intro__mark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  padding: 0 24px;
+}
+
+.intro__roof {
+  width: min(360px, 70vw);
+  height: auto;
+}
+
+.intro__word {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: clamp(0.8rem, 2.4vw, 1.05rem);
+  font-weight: 500;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--text-on-dark-soft);
+  white-space: nowrap;
+}
+
 /* ---------- premium ambience ---------- */
 
 /* styled scrollbar */
@@ -1098,6 +1134,22 @@ h1 em {
 
 .cta-band .hero__ctas {
   justify-content: center;
+}
+
+.cta-gem {
+  position: absolute;
+  right: clamp(-40px, 2vw, 60px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(140px, 18vw, 240px);
+  height: clamp(140px, 18vw, 240px);
+  opacity: 0.85;
+}
+
+@media (max-width: 720px) {
+  .cta-gem {
+    display: none;
+  }
 }
 
 /* ---------- contact ---------- */

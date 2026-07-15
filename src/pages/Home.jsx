@@ -9,6 +9,7 @@ import CountUp from '../components/CountUp'
 import Magnetic from '../components/Magnetic'
 import { PRODUCTS } from '../data/products'
 import { SECTORS } from '../data/site'
+import { INTRO_DELAY } from '../lib/intro'
 
 import steelHero from '../assets/photos/steel-hero.png'
 import valvesHero from '../assets/photos/valves-hero.jpg'
@@ -96,7 +97,7 @@ function StaggeredTitle() {
           <motion.span
             initial={{ y: '115%' }}
             animate={{ y: 0 }}
-            transition={{ duration: 0.85, delay: 0.25 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.85, delay: INTRO_DELAY + 0.25 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
           >
             {w.em ? <em>{w.t}</em> : w.t}
             {' '}
@@ -125,7 +126,7 @@ export default function Home() {
               style={{ color: '#c99ad6' }}
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.7, delay: INTRO_DELAY + 0.15, ease: [0.22, 1, 0.36, 1] }}
             >
               <span className="diamond" />
               Decor Builders Warehouse · est. 19 years
@@ -137,7 +138,7 @@ export default function Home() {
               className="hero__sub"
               initial={{ opacity: 0, y: 26 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.8, delay: INTRO_DELAY + 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
               From foundation steel to the final door handle — one warehouse,
               one delivery, and 19 years of keeping Zimbabwe's projects on schedule.
@@ -147,7 +148,7 @@ export default function Home() {
               className="hero__ctas"
               initial={{ opacity: 0, y: 26 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.72, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.8, delay: INTRO_DELAY + 0.72, ease: [0.22, 1, 0.36, 1] }}
             >
               <Magnetic>
                 <Link to="/products" className="btn btn--primary">
@@ -165,7 +166,7 @@ export default function Home() {
               className="hero__stats"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.95 }}
+              transition={{ duration: 1, delay: INTRO_DELAY + 0.95 }}
             >
               <div className="hero__stat">
                 <b><CountUp value={19} /></b>
@@ -284,17 +285,7 @@ export default function Home() {
           <Reveal>
             <div className="cta-band dotted grain">
               <Suspense fallback={null}>
-                <DiamondSpin
-                  style={{
-                    position: 'absolute',
-                    right: 'clamp(-40px, 2vw, 60px)',
-                    top: '50%',
-                    transform: 'translateY(-50%)',
-                    width: 'clamp(140px, 18vw, 240px)',
-                    height: 'clamp(140px, 18vw, 240px)',
-                    opacity: 0.85,
-                  }}
-                />
+                <DiamondSpin className="cta-gem" />
               </Suspense>
               <span className="overline" style={{ color: 'var(--gold)' }}>
                 <span className="diamond" />
