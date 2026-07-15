@@ -1,8 +1,21 @@
+import { useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useQuote } from './QuoteContext'
 
 export default function QuoteDrawer() {
   const { items, open, setOpen, remove, clear, mailto, whatsapp, toast } = useQuote()
+
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e) => e.key === 'Escape' && setOpen(false)
+    document.addEventListener('keydown', onKey)
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = prev
+    }
+  }, [open, setOpen])
 
   return (
     <>
@@ -38,6 +51,9 @@ export default function QuoteDrawer() {
             />
             <motion.aside
               className="drawer"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Quote list"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}

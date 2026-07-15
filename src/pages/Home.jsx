@@ -19,6 +19,7 @@ import doorsImg from '../assets/products/doors.png'
 import teamTogether from '../assets/photos/team-together.jpg'
 
 const Hero3D = lazy(() => import('../components/Hero3D'))
+const DiamondSpin = lazy(() => import('../components/DiamondSpin'))
 
 const DEPARTMENTS = [
   {
@@ -252,6 +253,19 @@ export default function Home() {
         <div className="container">
           <Reveal>
             <div className="cta-band dotted">
+              <Suspense fallback={null}>
+                <DiamondSpin
+                  style={{
+                    position: 'absolute',
+                    right: 'clamp(-40px, 2vw, 60px)',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    width: 'clamp(140px, 18vw, 240px)',
+                    height: 'clamp(140px, 18vw, 240px)',
+                    opacity: 0.85,
+                  }}
+                />
+              </Suspense>
               <span className="overline" style={{ color: 'var(--gold)' }}>
                 <span className="diamond" />
                 Project supply

@@ -39,17 +39,17 @@ export const TEAM = [
   {
     name: 'Fortune Chisango',
     role: 'Managing Director',
-    photo: new URL('../assets/team/fortune-chisango.png', import.meta.url).href,
+    photo: new URL('../assets/team/fortune-chisango.jpg', import.meta.url).href,
   },
   {
     name: 'Melinda Chipepera',
     role: 'Admin Manager',
-    photo: new URL('../assets/team/melinda-chipepera.png', import.meta.url).href,
+    photo: new URL('../assets/team/melinda-chipepera.jpg', import.meta.url).href,
   },
   {
     name: 'Godfrey Kajayi',
     role: 'Sales Executive',
-    photo: new URL('../assets/team/godfrey-kajayi.png', import.meta.url).href,
+    photo: new URL('../assets/team/godfrey-kajayi.jpg', import.meta.url).href,
   },
 ]
 

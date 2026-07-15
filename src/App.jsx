@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import QuoteDrawer from './components/QuoteDrawer'
@@ -18,18 +19,29 @@ function ScrollToTop() {
 }
 
 export default function App() {
+  const { pathname } = useLocation()
   return (
     <QuoteProvider>
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
       <ScrollToTop />
       <Nav />
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<Home />} />
-        </Routes>
+      <main id="main">
+        <motion.div
+          key={pathname}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.35, ease: 'easeOut' }}
+        >
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<Home />} />
+          </Routes>
+        </motion.div>
       </main>
       <Footer />
       <QuoteDrawer />
