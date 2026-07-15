@@ -32,7 +32,8 @@ export default function Products() {
 
   return (
     <>
-      <section className="page-hero dotted">
+      <section className="page-hero dotted grain">
+        <div className="aurora aurora--one" aria-hidden="true" />
         <div className="container">
           <Reveal>
             <span className="overline" style={{ color: '#c99ad6' }}>
@@ -41,7 +42,7 @@ export default function Products() {
             </span>
           </Reveal>
           <Reveal delay={0.08}>
-            <h1 className="display-xl">The catalogue.</h1>
+            <h1 className="display-xl">The <em>catalogue.</em></h1>
           </Reveal>
           <Reveal delay={0.16}>
             <p className="lede">

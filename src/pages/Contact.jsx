@@ -48,7 +48,8 @@ export default function Contact() {
 
   return (
     <>
-      <section className="page-hero dotted">
+      <section className="page-hero dotted grain">
+        <div className="aurora aurora--one" aria-hidden="true" />
         <div className="container">
           <Reveal>
             <span className="overline" style={{ color: '#c99ad6' }}>
@@ -58,7 +59,7 @@ export default function Contact() {
           </Reveal>
           <Reveal delay={0.08}>
             <h1 className="display-xl" style={{ maxWidth: '15ch' }}>
-              Your success is our priority.
+              Your success is <em>our priority.</em>
             </h1>
           </Reveal>
           <Reveal delay={0.16}>

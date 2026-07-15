@@ -9,7 +9,8 @@ import fieldWorkers from '../assets/photos/field-workers.jpg'
 export default function About() {
   return (
     <>
-      <section className="page-hero dotted">
+      <section className="page-hero dotted grain">
+        <div className="aurora aurora--one" aria-hidden="true" />
         <div className="container">
           <Reveal>
             <span className="overline" style={{ color: '#c99ad6' }}>
@@ -19,7 +20,7 @@ export default function About() {
           </Reveal>
           <Reveal delay={0.08}>
             <h1 className="display-xl" style={{ maxWidth: '16ch' }}>
-              Built over 19 years. Building for generations.
+              Built over 19 years. <em>Building for generations.</em>
             </h1>
           </Reveal>
           <Reveal delay={0.16}>
@@ -65,7 +66,7 @@ export default function About() {
           <SectionHeading
             center
             overline="Where we're going"
-            title="Goals with a horizon."
+            title={<>Goals with a <em>horizon.</em></>}
           />
           <div className="goals">
             {GOALS.map((g, i) => (
@@ -87,7 +88,7 @@ export default function About() {
           <SectionHeading
             center
             overline="The people"
-            title="Our professional team."
+            title={<>Our <em>professional</em> team.</>}
           />
           <div className="team-grid">
             {TEAM.map((t, i) => (

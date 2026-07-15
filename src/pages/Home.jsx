@@ -5,6 +5,8 @@ import Reveal from '../components/Reveal'
 import SectionHeading from '../components/SectionHeading'
 import ClientsMarquee from '../components/ClientsMarquee'
 import ProductCard from '../components/ProductCard'
+import CountUp from '../components/CountUp'
+import Magnetic from '../components/Magnetic'
 import { PRODUCTS } from '../data/products'
 import { SECTORS } from '../data/site'
 
@@ -76,11 +78,42 @@ const featured = PRODUCTS.filter((x) => x.badge === 'Best seller').concat(
   PRODUCTS.filter((x) => ['Hard Hats', 'Palisade Fencing', 'Copper Pipes & Fittings'].includes(x.name))
 )
 
+/* Word-by-word masked reveal for the hero headline. */
+function StaggeredTitle() {
+  const words = [
+    { t: 'Everything' },
+    { t: 'your' },
+    { t: 'site' },
+    { t: 'needs,' },
+    { t: 'under', em: true },
+    { t: 'one', em: true },
+    { t: 'roof.', em: true },
+  ]
+  return (
+    <h1 className="display-xl hero__title" aria-label="Everything your site needs, under one roof.">
+      {words.map((w, i) => (
+        <span className="word-mask" key={i} aria-hidden="true">
+          <motion.span
+            initial={{ y: '115%' }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.85, delay: 0.25 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {w.em ? <em>{w.t}</em> : w.t}
+            {' '}
+          </motion.span>
+        </span>
+      ))}
+    </h1>
+  )
+}
+
 export default function Home() {
   return (
     <>
       {/* ============ HERO ============ */}
-      <section className="hero">
+      <section className="hero grain">
+        <div className="aurora aurora--one" aria-hidden="true" />
+        <div className="aurora aurora--two" aria-hidden="true" />
         <Suspense fallback={null}>
           <Hero3D />
         </Suspense>
@@ -98,55 +131,52 @@ export default function Home() {
               Decor Builders Warehouse · est. 19 years
             </motion.span>
 
-            <motion.h1
-              className="display-xl hero__title"
-              initial={{ opacity: 0, y: 26 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            >
-              Everything your site needs, <em>under one roof.</em>
-            </motion.h1>
+            <StaggeredTitle />
 
             <motion.p
               className="hero__sub"
               initial={{ opacity: 0, y: 26 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.42, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
-              Timber, boards, doors, steel, plumbing, sanitary ware and PPE —
-              supplied to Zimbabwe's builders, miners and farmers for 19 years.
+              From foundation steel to the final door handle — one warehouse,
+              one delivery, and 19 years of keeping Zimbabwe's projects on schedule.
             </motion.p>
 
             <motion.div
               className="hero__ctas"
               initial={{ opacity: 0, y: 26 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.8, delay: 0.72, ease: [0.22, 1, 0.36, 1] }}
             >
-              <Link to="/products" className="btn btn--primary">
-                Browse the catalogue
-              </Link>
-              <Link to="/contact" className="btn btn--ghost-light">
-                Talk to sales
-              </Link>
+              <Magnetic>
+                <Link to="/products" className="btn btn--primary">
+                  Browse the catalogue
+                </Link>
+              </Magnetic>
+              <Magnetic>
+                <Link to="/contact" className="btn btn--ghost-light">
+                  Talk to sales
+                </Link>
+              </Magnetic>
             </motion.div>
 
             <motion.div
               className="hero__stats"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.85 }}
+              transition={{ duration: 1, delay: 0.95 }}
             >
               <div className="hero__stat">
-                <b>19</b>
+                <b><CountUp value={19} /></b>
                 <span>Years established</span>
               </div>
               <div className="hero__stat">
-                <b>70+</b>
+                <b><CountUp value={70} suffix="+" /></b>
                 <span>Product lines</span>
               </div>
               <div className="hero__stat">
-                <b>22+</b>
+                <b><CountUp value={22} suffix="+" /></b>
                 <span>Corporate clients</span>
               </div>
             </motion.div>
@@ -161,7 +191,7 @@ export default function Home() {
         <div className="container">
           <SectionHeading
             overline="What we supply"
-            title="Eight departments. One warehouse."
+            title={<>Eight departments. <em>One warehouse.</em></>}
             lede="From foundation steel to the final coat hook — every department is stocked, priced for projects, and ready to load."
           />
           <div className="grid-cats">
@@ -189,7 +219,7 @@ export default function Home() {
           <div>
             <SectionHeading
               overline="Who we are"
-              title="19 years of showing up for Zimbabwe's builders."
+              title={<>19 years of <em>showing up</em> for Zimbabwe's builders.</>}
               lede="Décor Builders Warehouse operates in a high-demand construction environment — and delivers through it."
             />
             <ul className="checklist" style={{ color: 'var(--text-on-dark)' }}>
@@ -216,7 +246,7 @@ export default function Home() {
         <div className="container">
           <SectionHeading
             overline="Straight from the catalogue"
-            title="Best sellers, site-proven."
+            title={<>Best sellers, <em>site-proven.</em></>}
             lede="The exact products from our 2026 catalogues — add them to a quote list and send it to sales in one tap."
           />
           <div className="grid-products">
@@ -242,7 +272,7 @@ export default function Home() {
           <SectionHeading
             center
             overline="Trusted by"
-            title="The names on our delivery notes."
+            title={<>The names on our <em>delivery notes.</em></>}
           />
         </div>
         <ClientsMarquee />
@@ -252,7 +282,7 @@ export default function Home() {
       <section className="section">
         <div className="container">
           <Reveal>
-            <div className="cta-band dotted">
+            <div className="cta-band dotted grain">
               <Suspense fallback={null}>
                 <DiamondSpin
                   style={{
@@ -276,12 +306,16 @@ export default function Home() {
                 experience the difference that quality and expertise make.
               </p>
               <div className="hero__ctas">
-                <Link to="/contact" className="btn btn--primary">
-                  Get a quote
-                </Link>
-                <a href="tel:+263715067556" className="btn btn--ghost-light">
-                  Call 0715 067 556
-                </a>
+                <Magnetic>
+                  <Link to="/contact" className="btn btn--primary">
+                    Get a quote
+                  </Link>
+                </Magnetic>
+                <Magnetic>
+                  <a href="tel:+263715067556" className="btn btn--ghost-light">
+                    Call 0715 067 556
+                  </a>
+                </Magnetic>
               </div>
             </div>
           </Reveal>
