@@ -64,7 +64,10 @@ export default function Footer() {
         </div>
         <div className="footer__bar">
           <span>© {new Date().getFullYear()} Decor Builders Warehouse. All rights reserved.</span>
-          <span>Your success is our priority.</span>
+          <span>
+            <a href="/image-credits.html" target="_blank" rel="noreferrer">Image credits</a>
+            {' · '}Your success is our priority.
+          </span>
         </div>
       </div>
     </footer>
