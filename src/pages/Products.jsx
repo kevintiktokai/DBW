@@ -8,12 +8,18 @@ import { CATEGORIES, PRODUCTS } from '../data/products'
 export default function Products() {
   const [params, setParams] = useSearchParams()
   const urlCat = params.get('cat')
+  const urlQuery = params.get('q') || ''
   const [cat, setCat] = useState(urlCat && CATEGORIES.includes(urlCat) ? urlCat : 'All')
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState(urlQuery)
 
   useEffect(() => {
     if (urlCat && CATEGORIES.includes(urlCat)) setCat(urlCat)
+    else if (!urlCat) setCat('All')
   }, [urlCat])
+
+  useEffect(() => {
+    setQuery(urlQuery)
+  }, [urlQuery])
 
   const list = useMemo(() => {
     let out = PRODUCTS

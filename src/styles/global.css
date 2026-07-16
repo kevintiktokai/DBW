@@ -396,8 +396,8 @@ h1 em {
   left: 0;
   right: 0;
   z-index: 100;
-  transition: background 0.35s, box-shadow 0.35s, padding 0.35s;
-  padding: 18px 0;
+  transition: background 0.35s, box-shadow 0.35s, padding 0.35s var(--ease-out);
+  padding: 17px 0;
 }
 
 .nav--solid {
@@ -405,36 +405,108 @@ h1 em {
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08), 0 12px 40px rgba(20, 12, 26, 0.35);
-  padding: 12px 0;
+  padding: 7px 0;
 }
 
 .nav__inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+  gap: 20px;
+}
+
+.nav__logo {
+  flex: 1 1 0;
 }
 
 .nav__logo img {
   height: 46px;
   width: auto;
+  transition: height 0.35s var(--ease-out);
 }
 
-.nav__links {
+.nav--solid .nav__logo img {
+  height: 37px;
+}
+
+/* ---- centered search ---- */
+
+.nav__search {
+  flex: 0 0 auto;
+  width: min(400px, 32vw);
   display: flex;
   align-items: center;
-  gap: 6px;
-  list-style: none;
+  gap: 9px;
+  padding: 0 16px;
+  height: 42px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  color: var(--text-on-dark-soft);
+  transition: height 0.35s var(--ease-out), background 0.25s, border-color 0.25s;
+}
+
+.nav--solid .nav__search {
+  height: 38px;
+}
+
+.nav__search:focus-within {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(201, 154, 214, 0.6);
+}
+
+.nav__search svg {
+  flex: none;
+  opacity: 0.8;
+}
+
+.nav__search input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: none;
+  outline: none;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.nav__search input::placeholder {
+  color: var(--text-on-dark-soft);
+  opacity: 0.75;
+}
+
+.nav__search input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+.nav__search--mobile {
+  display: none;
+}
+
+/* ---- links cluster ---- */
+
+.nav__links {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
 }
 
 .nav__link {
-  padding: 9px 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 9px 15px;
   border-radius: var(--radius-pill);
   color: var(--text-on-dark-soft);
+  font-family: var(--font-body);
   font-weight: 500;
   font-size: 0.95rem;
   letter-spacing: 0.03em;
   transition: color 0.2s, background 0.2s;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
 .nav__link:hover {
@@ -446,6 +518,103 @@ h1 em {
   color: #fff;
   background: rgba(138, 85, 150, 0.35);
 }
+
+.nav__cta {
+  margin-left: 8px;
+}
+
+/* ---- catalogue dropdown ---- */
+
+.nav__dd {
+  position: relative;
+}
+
+.nav__dd-toggle svg {
+  transition: transform 0.28s var(--ease-out);
+}
+
+.nav__dd--open .nav__dd-toggle svg {
+  transform: rotate(180deg);
+}
+
+.nav__dd--open .nav__dd-toggle {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav__menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 460px;
+  padding: 12px;
+  margin-top: 12px;
+  transform: translateX(-50%) translateY(10px);
+  background: rgba(38, 28, 46, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  box-shadow: 0 24px 60px rgba(15, 8, 20, 0.55);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s var(--ease-out), transform 0.25s var(--ease-out);
+}
+
+/* hover bridge so the menu doesn't close in the gap */
+.nav__menu::before {
+  content: '';
+  position: absolute;
+  top: -14px;
+  left: 0;
+  right: 0;
+  height: 14px;
+}
+
+.nav__dd--open .nav__menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav__menu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.nav__menu-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 11px 14px;
+  border-radius: 11px;
+  color: var(--text-on-dark-soft);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: background 0.18s, color 0.18s;
+}
+
+.nav__menu-item:hover {
+  background: rgba(138, 85, 150, 0.28);
+  color: #fff;
+}
+
+.nav__menu-item--all {
+  color: #fff;
+  font-weight: 600;
+  background: linear-gradient(120deg, rgba(98, 55, 107, 0.55), rgba(107, 58, 81, 0.55));
+}
+
+.nav__menu-item--all:hover {
+  background: linear-gradient(120deg, var(--plum), var(--wine));
+}
+
+/* ---- burger ---- */
 
 .nav__burger {
   display: none;
@@ -473,21 +642,40 @@ h1 em {
 }
 
 @media (max-width: 880px) {
+  /* On mobile the slide-out drawer is a fixed child of .nav, so any
+     containing-block-creating property on .nav (like backdrop-filter)
+     would trap the drawer inside the bar's height. Use a solid bar instead. */
+  .nav--solid {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(30, 22, 36, 0.96);
+  }
+
+  /* hide the centered desktop search; logo takes the freed space */
+  .nav__inner > .nav__search {
+    display: none;
+  }
+
+  .nav__logo {
+    flex: 1;
+  }
+
   .nav__links {
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
-    width: min(320px, 84vw);
+    width: min(340px, 86vw);
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 8px;
-    padding: 40px;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 6px;
+    padding: 92px 28px 40px;
     background: linear-gradient(170deg, var(--plum-deep), var(--ink));
     transform: translateX(100%);
     transition: transform 0.4s var(--ease-out);
     box-shadow: -24px 0 60px rgba(0, 0, 0, 0.4);
+    overflow-y: auto;
   }
 
   .nav__links--open {
@@ -495,7 +683,20 @@ h1 em {
   }
 
   .nav__link {
-    font-size: 1.2rem;
+    font-size: 1.12rem;
+    padding: 12px 14px;
+    justify-content: space-between;
+  }
+
+  .nav__search--mobile {
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .nav__cta {
+    margin: 14px 0 0;
+    width: 100%;
   }
 
   .nav__burger {
@@ -503,8 +704,40 @@ h1 em {
     z-index: 110;
   }
 
-  .nav__cta {
-    display: none;
+  /* dropdown expands inline within the drawer */
+  .nav__dd {
+    width: 100%;
+  }
+
+  .nav__dd-toggle {
+    width: 100%;
+  }
+
+  .nav__menu {
+    position: static;
+    width: 100%;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    background: rgba(0, 0, 0, 0.2);
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 6px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s var(--ease-out), padding 0.35s var(--ease-out);
+  }
+
+  .nav__dd--open .nav__menu {
+    max-height: 620px;
+    padding: 6px;
+    transform: none;
+  }
+
+  .nav__menu-grid {
+    grid-template-columns: 1fr;
   }
 }
 
