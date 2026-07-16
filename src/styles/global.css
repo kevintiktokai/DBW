@@ -680,6 +680,46 @@ h1 em {
   transition: transform 0.6s var(--ease-out);
 }
 
+.cat-card__img--brand {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e9d8ef;
+  background:
+    radial-gradient(ellipse 70% 80% at 30% 20%, rgba(138, 85, 150, 0.5), transparent 60%),
+    linear-gradient(150deg, var(--plum-deep), var(--ink));
+}
+
+.cat-card__img--brand::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 18px 18px;
+  mask-image: radial-gradient(ellipse 70% 60% at 80% 90%, black, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 80% 90%, black, transparent 70%);
+}
+
+.cat-card:hover .cat-card__img--brand {
+  color: #fff;
+}
+
+.cat-card__tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 1;
+  background: var(--gold);
+  color: var(--ink);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 11px;
+  border-radius: var(--radius-pill);
+}
+
 .cat-card:hover .cat-card__img img {
   transform: scale(1.06);
   filter: saturate(1.12);
@@ -792,6 +832,27 @@ h1 em {
   max-height: 100%;
   object-fit: contain;
   transition: transform 0.45s var(--ease-out);
+}
+
+.product-card__img--placeholder {
+  flex-direction: column;
+  gap: 12px;
+  color: var(--slate);
+  background:
+    radial-gradient(ellipse 90% 80% at 50% 30%, rgba(118, 123, 150, 0.1), transparent 70%),
+    var(--mist);
+}
+
+.product-card__img--placeholder span {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+.product-card:hover .product-card__img--placeholder {
+  color: var(--plum);
 }
 
 .product-card:hover .product-card__img img {
@@ -1205,6 +1266,33 @@ h1 em {
 
 .contact-item a:hover {
   color: var(--plum);
+}
+
+.hours {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.hours li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.98rem;
+}
+
+.hours li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.hours b {
+  color: #fff;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .form {

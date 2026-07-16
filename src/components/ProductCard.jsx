@@ -1,4 +1,5 @@
 import { useQuote } from './QuoteContext'
+import CategoryIcon from './CategoryIcon'
 
 export default function ProductCard({ product }) {
   const { toggle, has } = useQuote()
@@ -7,9 +8,16 @@ export default function ProductCard({ product }) {
   return (
     <article className="product-card">
       {product.badge && <span className="product-card__badge">{product.badge}</span>}
-      <div className="product-card__img">
-        <img src={product.img} alt={product.name} loading="lazy" />
-      </div>
+      {product.img ? (
+        <div className="product-card__img">
+          <img src={product.img} alt={product.name} loading="lazy" />
+        </div>
+      ) : (
+        <div className="product-card__img product-card__img--placeholder">
+          <CategoryIcon category={product.cat} />
+          <span>Photo coming soon</span>
+        </div>
+      )}
       <div className="product-card__body">
         <span className="product-card__cat">{product.cat}</span>
         <span className="product-card__name">{product.name}</span>

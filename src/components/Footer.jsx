@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import logoWhite from '../assets/brand/logo-white.png'
-import { CONTACT } from '../data/site'
+import { CONTACT, HOURS } from '../data/site'
 import Roofline from './Roofline'
 
 export default function Footer() {
@@ -30,9 +30,10 @@ export default function Footer() {
             <ul>
               <li><Link to="/products?cat=Steel">Steel</Link></li>
               <li><Link to="/products?cat=Safety %26 PPE">Safety & PPE</Link></li>
-              <li><Link to="/products?cat=Pipes %26 Fittings">Pipes & fittings</Link></li>
               <li><Link to="/products?cat=Sanitary Ware">Sanitary ware</Link></li>
-              <li><Link to="/products?cat=Timber, Boards %26 Doors">Timber & boards</Link></li>
+              <li><Link to="/products?cat=Blinds">Blinds</Link></li>
+              <li><Link to="/products?cat=Electricals">Electricals</Link></li>
+              <li><Link to="/products?cat=General Hardware">General hardware</Link></li>
             </ul>
           </div>
           <div>
@@ -50,6 +51,14 @@ export default function Footer() {
                   WhatsApp sales
                 </a>
               </li>
+            </ul>
+            <h4 style={{ marginTop: 28 }}>Opening hours</h4>
+            <ul>
+              {HOURS.map((h) => (
+                <li key={h.days} style={{ opacity: 0.85 }}>
+                  {h.days}: {h.time}
+                </li>
+              ))}
             </ul>
           </div>
         </div>

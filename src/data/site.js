@@ -10,6 +10,12 @@ export const CONTACT = {
   whatsapp: 'https://wa.me/263715067556',
 }
 
+export const HOURS = [
+  { days: 'Monday – Friday', time: '07:46 – 16:46' },
+  { days: 'Saturday', time: '08:00 – 13:00' },
+  { days: 'Sunday & public holidays', time: 'Closed' },
+]
+
 export const CLIENTS = [
   'Banc ABC',
   'Bitumen',

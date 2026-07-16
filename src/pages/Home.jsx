@@ -7,6 +7,7 @@ import ClientsMarquee from '../components/ClientsMarquee'
 import ProductCard from '../components/ProductCard'
 import CountUp from '../components/CountUp'
 import Magnetic from '../components/Magnetic'
+import CategoryIcon from '../components/CategoryIcon'
 import { PRODUCTS } from '../data/products'
 import { SECTORS } from '../data/site'
 import { INTRO_DELAY } from '../lib/intro'
@@ -72,6 +73,24 @@ const DEPARTMENTS = [
     text: 'Style with substance — basins, baths, toilets, mixers, showers and dispensers for every bathroom.',
     img: sanitaryImg,
     cat: 'Sanitary Ware',
+  },
+  {
+    title: 'Blinds',
+    text: 'Roller, venetian, vertical, roman and day-night blinds — measured, supplied and fitted.',
+    cat: 'Blinds',
+    tag: 'Fix & supply',
+  },
+  {
+    title: 'Electricals',
+    text: 'Cables, DB boards, switches, sockets, LED lighting and full electrical installation.',
+    cat: 'Electricals',
+    tag: 'Fix & supply',
+  },
+  {
+    title: 'General Hardware',
+    text: 'Hand tools, locks, hinges, fixings, brushes and everything else the job needs.',
+    cat: 'General Hardware',
+    tag: 'Fix & supply',
   },
 ]
 
@@ -192,16 +211,23 @@ export default function Home() {
         <div className="container">
           <SectionHeading
             overline="What we supply"
-            title={<>Eight departments. <em>One warehouse.</em></>}
+            title={<>Every department. <em>One warehouse.</em></>}
             lede="From foundation steel to the final coat hook — every department is stocked, priced for projects, and ready to load."
           />
           <div className="grid-cats">
             {DEPARTMENTS.map((d, i) => (
               <Reveal key={d.title} delay={(i % 4) * 0.08}>
                 <Link to={`/products?cat=${d.cat}`} className="cat-card" style={{ height: '100%' }}>
-                  <div className="cat-card__img">
-                    <img src={d.img} alt={d.title} loading="lazy" />
-                  </div>
+                  {d.img ? (
+                    <div className="cat-card__img">
+                      <img src={d.img} alt={d.title} loading="lazy" />
+                    </div>
+                  ) : (
+                    <div className="cat-card__img cat-card__img--brand">
+                      {d.tag && <span className="cat-card__tag">{d.tag}</span>}
+                      <CategoryIcon category={d.cat} size={64} />
+                    </div>
+                  )}
                   <div className="cat-card__body">
                     <h3>{d.title}</h3>
                     <p>{d.text}</p>

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Reveal from '../components/Reveal'
-import { CONTACT } from '../data/site'
+import { CONTACT, HOURS } from '../data/site'
 
 const PhoneIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -119,9 +119,17 @@ export default function Contact() {
               >
                 <span className="overline" style={{ color: 'var(--gold)' }}>
                   <span className="diamond" />
-                  Trade hours
+                  Opening hours
                 </span>
-                <p style={{ marginTop: 12, fontSize: '0.98rem' }}>
+                <ul className="hours" style={{ marginTop: 16 }}>
+                  {HOURS.map((h) => (
+                    <li key={h.days}>
+                      <span>{h.days}</span>
+                      <b>{h.time}</b>
+                    </li>
+                  ))}
+                </ul>
+                <p style={{ marginTop: 16, fontSize: '0.92rem', opacity: 0.85 }}>
                   Contractors welcome from opening — bring your bill of quantities
                   and leave with a priced schedule the same day.
                 </p>

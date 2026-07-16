@@ -38,7 +38,7 @@ export default function Products() {
           <Reveal>
             <span className="overline" style={{ color: '#c99ad6' }}>
               <span className="diamond" />
-              2026 catalogues · PPE · Farming & Mining
+              PPE · Farming & Mining · Sanitary · Blinds · Electrical · Hardware
             </span>
           </Reveal>
           <Reveal delay={0.08}>
@@ -118,8 +118,10 @@ export default function Products() {
             className="center"
             style={{ marginTop: 56, color: 'var(--text-soft)', fontSize: '0.92rem' }}
           >
-            Prices shown as printed in the 2026 catalogues and subject to confirmation.
-            Items without a printed price are quoted per project.
+            Catalogue prices shown as printed and subject to confirmation. Our blinds,
+            electrical and general hardware ranges — including fix &amp; supply — are
+            quoted per project; add them to a quote list and we'll price them for you.
+            More product photos are on the way.
           </p>
         </div>
       </section>
